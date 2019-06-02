@@ -7,7 +7,6 @@
     <!-- Bootstrap File -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
 
 
     <!-- JQuery -->
@@ -21,25 +20,27 @@
 
     <div class="text-center"><h2>Answer A Few Questions</h2></div>
     <hr>
-<div>
-    <h3><strong>About You</strong></h3></div>
+    <div>
+        <h3><strong>About You</strong></h3></div>
     <h6>Provide your name and a link to your picture below.</h6>
 
-    <div>
-    <h4>Name*</h4></div>
+    <form method="POST" role="form">
+    <div class="form-group">
+        <label for="name"><strong>Name*</strong></label>
+        <input type="text" class="form-control" id="name" required>
+    </div>
+    <br>
 
-    <div>
-    <input type="text" id="name" class="form-control" required>
-    </div><br>
+    <div class="form-group">
+        <label for="photo"><strong>Photo (Link)*</strong></label>
+        <input type="text" class="form-control" id="photo" required>
+    </div>
 
-    <h4>Photo (Link)*</h4>
-    <input type="text" id="photo" class="form-control" required>
-
-<div class="text-left">*Required</div>
+    <div class="text-left">*Required</div>
     <hr>
 
 
-<h5>Question 1</h5>
+    <h5>Question 1</h5>
 <h6>You go on vacation every year?</h6>
 <select class="chosen-select" id="answer1">
     <option value=""></option>
@@ -157,9 +158,56 @@
         <option value="4">4</option>
         <option value="5">5 (Strongly Agree)</option>
     </select>
-
+    <br>    <br>    <br>
+    </form>
+    <button type="submit" class="btn btn-success btn-md" id="submit-btn"><span class="fa"></span> Submit Your Survey</button>
 </div>
 
+<script type="text/javascript">
+    $("#submit-btn").on("click", function(event) {
+        event.preventDefault();
+        var newFriend = {
+            name: $("#name").val().trim(),
+            photo: $("#photo").val().trim(),
+            answerOne: $("#answer1").val().trim(),
+            answerTwo: $("#answer2").val().trim(),
+            answerThree: $("#answer3").val().trim(),
+            answerFour: $("#answer4").val().trim(),
+            answerFive: $("#answer5").val().trim(),
+            answerSix: $("#answer6").val().trim(),
+            answerSeven: $("#answer7").val().trim(),
+            answerEight: $("#answer8").val().trim(),
+            answerNine: $("#answer9").val().trim(),
+            answerTen: $("#answer10").val().trim(),
+        };
+
+        console.log(newFriend);
+
+        $.post("/api/friends", newFriend,
+            function(data) {
+                //  call function to compare here
+                if (data) {
+                    console.log("friends.js", newFriend);
+                } else {
+                    console.log("Did not work");
+                }
+
+                // Clear form
+                $("#name").val("");
+                $("#photo").val("");
+                $("#answer1").val("");
+                $("#answer2").val("");
+                $("#answer3").val("");
+                $("#answer4").val("");
+                $("#answer5").val("");
+                $("#answer6").val("");
+                $("#answer7").val("");
+                $("#answer8").val("");
+                $("#answer9").val("");
+                $("#answer10").val("");
+            });
+    });
+</script>
 
 </body>
 </html>
