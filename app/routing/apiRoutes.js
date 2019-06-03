@@ -74,8 +74,6 @@ module.exports = function (app) {
         // Find the most compatible friend
 
         for (x = 0; (numberOfFriends - 1) > x; x++) {
-            // compare the 10 answers
-
             // initialize the variables to hold the difference between the answers from
             // the user and each friend
             var answer1Diff = 0;
@@ -90,7 +88,6 @@ module.exports = function (app) {
             var answer10Diff = 0;
 
             // friends numbers
-
             friendsAnswer1 = parseInt(friends[x].answer1);
             friendsAnswer2 = parseInt(friends[x].answer2);
             friendsAnswer3 = parseInt(friends[x].answer3);
@@ -103,7 +100,6 @@ module.exports = function (app) {
             friendsAnswer10 = parseInt(friends[x].answer10);
 
             // user numbers as is
-
             answer1Diff = newFriendAnswer1 - friendsAnswer1;
             answer2Diff = newFriendAnswer2 - friendsAnswer2;
             answer3Diff = newFriendAnswer3 - friendsAnswer3;
@@ -115,27 +111,14 @@ module.exports = function (app) {
             answer9Diff = newFriendAnswer9 - friendsAnswer9;
             answer10Diff = newFriendAnswer10 - friendsAnswer10;
 
-            // change negative numbers to absolute numbers
-
-
-            Math.abs(answer1Diff);
-
-
             tempTotalDifference = (Math.abs(answer1Diff) + Math.abs(answer2Diff) + Math.abs(answer3Diff) + Math.abs(answer4Diff) + Math.abs(answer5Diff) +
                 Math.abs(answer6Diff) + Math.abs(answer7Diff) + Math.abs(answer8Diff) + Math.abs(answer9Diff) + Math.abs(answer10Diff));
-
 
             if (totalDifference == 0 || (tempTotalDifference < totalDifference)) {
                 totalDifference = tempTotalDifference;
                 mostCompatibleIndex = x;
             }
-
         }
-
-
-        // put modal here
-
-
     });
 
 
