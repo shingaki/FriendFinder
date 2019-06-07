@@ -175,7 +175,8 @@
     <!-- Modal content -->
     <div class="modal-content">
         <span class="close">&times;</span>
-        <p>Some text in the Modal..</p>
+        <p id="mostCompatibleName"></p>
+        <p id="mostCompatiblePhoto"></p>
     </div>
 
 </div>
@@ -206,6 +207,7 @@
                 //  call function to compare here
                 if (data) {
                     console.log("Data Added");
+                    console.log("Data = " + data.name)
 
 
                     // Get the modal
@@ -213,6 +215,10 @@
 
                     // Get the button that opens the modal
                     // var btn = document.getElementById("submit-btn");
+                    $("#mostCompatibleName").text(data.name);
+                    $("#mostCompatiblePhoto").text(data.photo);
+
+
 
                     // Get the <span> element that closes the modal
                     var span = document.getElementsByClassName("close")[0];

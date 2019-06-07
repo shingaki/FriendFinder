@@ -22,22 +22,14 @@ module.exports = function (app) {
     app.post("/api/friends", function (req, res) {
 
         friends.push(req.body);
-        res.json(true);
-
-        console.log(friends);
-
-        console.log(friends[4].name);
-        console.log(friends[4].answer1);
-
+        // res.json(true);
 
         // Get the number of records in the array
         // includes the user
         var numberOfFriends = friends.length;
-        console.log('number of Friends ' + numberOfFriends);
 
         // Get the index of the user
         var j = (friends.length - 1);
-        console.log('new friend index ' + j);
 
         var newFriendAnswer1;
         var newFriendAnswer2;
@@ -50,9 +42,6 @@ module.exports = function (app) {
         var newFriendAnswer9;
         var newFriendAnswer10;
 
-
-        console.log(friends[4].name);
-        console.log(friends[4].answer1);
 
         // new friends
         newFriendAnswer1 = parseInt(friends[j].answer1);
@@ -69,7 +58,6 @@ module.exports = function (app) {
         // Define the variables
         var totalDifference = 0;
         var tempTotalDifference = 0;
-        var mostCompatibleIndex = 0;
 
         // Find the most compatible friend
 
@@ -118,8 +106,16 @@ module.exports = function (app) {
                 totalDifference = tempTotalDifference;
                 mostCompatibleIndex = x;
             }
+
         }
+
+        // return values here
+        return res.json(friends[mostCompatibleIndex]);
+        console.log("most compatible = " + friends[mostCompatibleIndex].name);
+
     });
 
 
 };
+
+
