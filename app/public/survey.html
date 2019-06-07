@@ -179,10 +179,19 @@
         <hr>
         <p id="mostCompatibleName"></p>
         <br>
-        <img id="mostCompatiblePhoto" src="" alt="">
+        <a id="mostCompatiblePhoto" href="">Click Here to see your most compatible friend!!</a>
     </div>
 
 </div>
+    <br>
+    <hr>
+
+    <footer class="footer">
+        <div class="container">
+            <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/shingaki/FriendFinder">GitHub Repo</a></p>
+        </div>
+    </footer>
+
 </div>
 
 <script type="text/javascript">
@@ -219,7 +228,7 @@
                     // Get the button that opens the modal
                     // var btn = document.getElementById("submit-btn");
                     $("#mostCompatibleName").text(data.name);
-                    $("#mostCompatiblePhoto").attr("src", data.photo);
+                    $("#mostCompatiblePhoto").attr("href", data.photo);
 
 
 
