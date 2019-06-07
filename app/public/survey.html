@@ -175,8 +175,11 @@
     <!-- Modal content -->
     <div class="modal-content">
         <span class="close">&times;</span>
+        <h3>Your Most Compatible Friend</h3>
+        <hr>
         <p id="mostCompatibleName"></p>
-        <p id="mostCompatiblePhoto"></p>
+        <br>
+        <img id="mostCompatiblePhoto" src="" alt="">
     </div>
 
 </div>
@@ -216,7 +219,7 @@
                     // Get the button that opens the modal
                     // var btn = document.getElementById("submit-btn");
                     $("#mostCompatibleName").text(data.name);
-                    $("#mostCompatiblePhoto").text(data.photo);
+                    $("#mostCompatiblePhoto").attr("src", data.photo);
 
 
 
